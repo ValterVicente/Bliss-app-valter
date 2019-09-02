@@ -9,15 +9,19 @@ import { ServerStatus } from './models/server-status';
 
 export class AppComponent {
 
-  serverStatus: string;
+  serverStatus: boolean;
 
   constructor(
     private serverService: ServerStatusService
   ) {
     this.serverService.getStatus()
     .subscribe((data: ServerStatus) => {
-      this.serverStatus = data['status'];
+      this.serverStatus = data['status'] === 'OK' ? true : false;
     });
+  }
+
+  retryAction() {
+    window.location.reload();
   }
 
 

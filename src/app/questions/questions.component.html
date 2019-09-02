@@ -1,0 +1,14 @@
+  <div class="row">
+    <div class="col-3 card" *ngFor="let question of questions">
+    <a href="{{ question.image_url }}">
+      <img src="{{ question.thumb_url }}" class="card-img-top" alt="thumb">
+      <div class="card-body">
+        <h5 class="card-title">{{ question.id }} - {{ question.question }}</h5>
+        <p class="card-text">{{ question.published_at }}</p>
+        <button type="button" class="btn btn-primary mt-1" *ngFor="let item of question.choices">
+          {{ item.choice }} : <span class="badge badge-secondary">{{ item.votes }}</span>
+        </button>
+      </div>
+    </a>
+  </div>
+</div>
